@@ -331,11 +331,11 @@ for sector in sectors:
         maxticket = pd.merge(ca,maxticket,on='Name')
         maxticket = pd.merge(maxticket,minticket,on='Name')
 
-        maxticket.columns = ['Name','ca ticket USDm','Max ticket USDm','Min ticket USDm']
+        maxticket.columns = ['Name','Credit Agricole ticket USDm','Max ticket USDm','Min ticket USDm']
 
         st.subheader(sector)
 
-        maxticket['Top ticket'] = maxticket.apply(lambda x: topticket(x['ca ticket USDm'],x['Max ticket USDm']),axis=1)
+        maxticket['Top ticket'] = maxticket.apply(lambda x: topticket(x['Credit Agricole ticket USDm'],x['Max ticket USDm']),axis=1)
         maxticket['Is club deal'] = maxticket.apply(lambda x: isclub(x['Max ticket USDm'],x['Min ticket USDm']),axis=1)
 
         nbdeals = len(output.columns)
@@ -357,15 +357,15 @@ for sector in sectors:
 
         col4,col5,col6 = st.columns(3)
         with col4:
-            st.metric('ca max ticket:','{:,.2f} USDm'.format(maxticket['ca ticket USDm'].max()))
+            st.metric('Credit Agricole max ticket:','{:,.2f} USDm'.format(maxticket['ca ticket USDm'].max()))
         with col5:
-            st.metric('ca average ticket:','{:,.2f} USDm'.format(maxticket['ca ticket USDm'].mean()))
+            st.metric('Credit Agricole average ticket:','{:,.2f} USDm'.format(maxticket['ca ticket USDm'].mean()))
         with col6:
-            st.metric('ca mean ticket:','{:,.2f} USDm'.format(maxticket['ca ticket USDm'].median()))
+            st.metric('Credit Agricole mean ticket:','{:,.2f} USDm'.format(maxticket['ca ticket USDm'].median()))
 
-        over50 = len(maxticket[maxticket['ca ticket USDm']>50])
-        over75 = len(maxticket[maxticket['ca ticket USDm']>75])
-        over100 = len(maxticket[maxticket['ca ticket USDm']>100])
+        over50 = len(maxticket[maxticket['Credit Agricole ticket USDm']>50])
+        over75 = len(maxticket[maxticket['Credit Agricole ticket USDm']>75])
+        over100 = len(maxticket[maxticket['Credit Agricole ticket USDm']>100])
 
         col7,col8,col9 = st.columns(3)
         with col7:

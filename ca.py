@@ -249,7 +249,7 @@ sectors = df['sector'].unique().tolist()
 sectors.insert(0,'All')
 
 
-yearselect = st.slider('Select period',minyear,maxyear,(2017,maxyear))
+yearselect = st.slider('Select period',minyear,maxyear,(2019,maxyear))
 df = df[(df['Year']>=yearselect[0])&(df['Year']<=yearselect[1])]
 
 ca = df[df['Lender'].str.contains('Credit Agricole')]
